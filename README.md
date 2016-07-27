@@ -63,22 +63,11 @@ Improve Search Relevancy
 8. The aem-solr-search configurations allow to customize the request handler and improve the search boosts on any particular field.
    Refer https://github.com/headwirecom/aem-solr-search/blob/master/aemsolrsearch-vagrant/solr-home/configsets/geomtrixx/conf/solrconfig.xml
    
-   To run an example, goto the solrconfig.xml in your Solr instance, add the following request handler for enhancing the search results relevancy, based on the example you are running with the test data.
+   To run an example, add the following request handler in solrconfig.xml of your Solr instance for enhancing the search results relevancy, based on the example you are running with the test data.
    
-   <requestHandler name="/geometrixx-media-search" class="solr.SearchHandler">
-               <lst name="defaults">
-                   <str name="echoParams">explicit</str>
-                   <int name="rows">10</int>
-                   <str name="defType">edismax</str>
-                   <str name="qf">
-                       title^10.0 tags^1.5 text^0.5
-                   </str>
-                   <str name="bq">( body:*^100 OR ( *:* -body:*)^0.5)</str>
-                   <str name="bf">recip(ms(NOW,last_modified),3.16e-11,0.08,0.05)^10.0</str>
-                   <str name="update.chain">geometrixx-media-chain</str>
-               </lst>
-   </requestHandler>
-     
+   Example: Request Handler
+   https://github.com/DevDh/aemsolrsearch-sample/blob/master/requestHandler-solrconfigXml.png
+   
    Restart your Solr Instance
          
 9. Refresh to see the updated search results

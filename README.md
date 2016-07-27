@@ -35,14 +35,16 @@ These instructions assume that AEM is running on localhost on port 4502 with the
         $ mvn clean install -PautoInstallPackage
         
         
-Running Example
-================        
+Running An Example
+===================        
         
 5. For testing purpose, to run with example data in Solr and to see how the newly installed search controller works. Run the following commands(Before running the following script, make sure to verify/update the CQ and Solr details.) 
 
         $ cd geometrixx-media-sample
         $ mvn install -Pauto-deploy-geo
-            
+        
+   Execute the following script
+   
         $ ./index-geometrixx-media-articles.sh
         
 6. The ui.content-sample module contains the already configured the search controller page, use the following to get it installed:
@@ -63,7 +65,7 @@ Improve Search Relevancy
    
    To run an example, goto the solrconfig.xml in your Solr instance, add the following request handler for enhancing the search results relevancy, based on the example you are running with the test data.
    
-       <requestHandler name="/geometrixx-media-search" class="solr.SearchHandler">
+   <requestHandler name="/geometrixx-media-search" class="solr.SearchHandler">
                <lst name="defaults">
                    <str name="echoParams">explicit</str>
                    <int name="rows">10</int>
@@ -75,17 +77,14 @@ Improve Search Relevancy
                    <str name="bf">recip(ms(NOW,last_modified),3.16e-11,0.08,0.05)^10.0</str>
                    <str name="update.chain">geometrixx-media-chain</str>
                </lst>
-         </requestHandler>
+   </requestHandler>
      
-    Restart your Solr Instance
+   Restart your Solr Instance
          
-9. Revisit:  to see the updated search results
+9. Refresh to see the updated search results
          
    Sample Geometrixx Media Search Page: [http://localhost:4502/cf#/content/aemsolrsearch/aem-solr-search-sample.html](http://localhost:4502/cf#/content/aemsolrsearch/aem-solr-search-sample.html) 
      
-     
-     
-
 
 For More Information
 --------------------

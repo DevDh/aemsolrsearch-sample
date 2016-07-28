@@ -91,43 +91,38 @@
             }
         }
 
+        if (snippet.length > 0){
 
-    var thumbnailSmall = doc.image_url_t + '.transform/featureThumbnailSmall/image.png';
-    var thumbnailLarge = doc.image_url_t + '.transform/featureThumbnailLarge/image.png';
+                        var thumbnailSmall = doc.image_url_t + '.transform/featureThumbnailSmall/image.png';
 
-    if (snippet.length > 0){
+                        output += '<div class="result-card">';
+                        output +=   '<div class="row">';
+                        output +=       '<div class="col-md-9">';
+                        output +=           '<a href="' + doc.url + '" class="google-title">' + title + '</a>';
+                        output +=               '<div class="google-url">' + doc.id + '</div>';
+                        output +=               '<a href="' + doc.url + '" class="pull-right">';
+                        output +=                   '<img src="' + thumbnailSmall + '">';
+                        output +=                '</a>';
+                        output +=               '<div>' + snippet + '</div></div>';
+                        output +=        '</div>';
+                        output +=   '</div>';
+                        output += '</div>';
 
-    output += '<div class="result-card">';
-        output += '<div class="row">';
-            output += '<div class="col-md-9">';
-                output += '<a href="' + doc.url + '" class="google-title">' + title + '</a>';
-                    output += '<div class="google-url">' + doc.id + '</div>';
+            } else {
+                        var thumbnailLarge = doc.image_url_t + '.transform/featureThumbnailLarge/image.png';
 
-                    output += '<a href="' + doc.url + '" class="pull-right">';
-                        output += '<img  src="' + thumbnailSmall + '">';
-                    output += '</a>';
-                    output += '<div>' + snippet + '</div></div>';
-
-                output += '</div>';
-            output += '</div>';
-        output += '</div>';
-
-    } else {
-
-        output += '<div class="result-card">';
-            output += '<div class="row">';
-                output += '<div class="col-md-9">';
-                    output += '<a href="' + doc.url + '" class="google-title">' + title + '</a>';
-                    output += '<div class="google-url">' + doc.id + '</div>';
-                    output += '<a href="' + doc.url + '" class="pull-left">';
-                        output += '<img  src="' + thumbnailLarge + '">';
-                    output += '</a>';
-
-                output += '</div>';
-            output += '</div>';
-        output += '</div>';
-
-    }
+                        output += '<div class="result-card">';
+                        output +=   '<div class="row">';
+                        output +=       '<div class="col-md-9">';
+                        output +=           '<a href="' + doc.url + '" class="google-title">' + title + '</a>';
+                        output +=               '<div class="google-url">' + doc.id + '</div>';
+                        output +=               '<a href="' + doc.url + '" class="pull-left">';
+                        output +=                   '<img  src="' + thumbnailLarge + '">';
+                        output +=               '</a>';
+                        output +=       '</div>';
+                        output +=   '</div>';
+                        output += '</div>';
+            }
 
         return output;
       },
